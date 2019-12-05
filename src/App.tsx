@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { Times, Header } from './components'
+import { Times, Header, Weather } from './components'
 
 const AppWrapper = styled.div`
     font-size: 16px;
@@ -18,6 +18,7 @@ const App = () => {
         <AppWrapper>
             <Header size="large">Hello.</Header>
             <Times />
+            <Weather />
         </AppWrapper>
     )
 }

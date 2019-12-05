@@ -105,8 +105,8 @@ const T = () => {
         }
         const StopPredictions = predictions[id].map((prediction, index) => <li key={index}><Text>{prediction.route}  {prediction.timeToDeparture}</Text></li>)
         const { intersection, nickname } = STOPS.find((stop) => stop.id === id)
-        const stopNickname = <Header size="medium">{nickname}</Header>
-        const stopIntersection = <Header size="small">{intersection}</Header>
+        const stopNickname = <Header size="small">{nickname}</Header>
+        const stopIntersection = <Text >{intersection}</Text>
 
         return (
 
@@ -121,9 +121,12 @@ const T = () => {
     })
 
     return (
-        <StopsWrapper>
-            {Predictions}
-        </StopsWrapper>
+        <React.Fragment>
+            <Header size="medium">Next Stop</Header>
+            <StopsWrapper>
+                {Predictions}
+            </StopsWrapper>
+        </React.Fragment>
     )
 }
 
