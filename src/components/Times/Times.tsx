@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import { mbta } from './services'
 import { useInterval } from '../../utilities'
-import { Header } from '../'
+import { Header, Text } from '../'
 
 const StopWrapper = styled.div`
     margin-right: 30px; 
@@ -103,7 +103,7 @@ const T = () => {
         if (!Object.keys(predictions).length) {
             return
         }
-        const StopPredictions = predictions[id].map((prediction, index) => <li key={index}>{prediction.route} {prediction.departure} {prediction.timeToDeparture}</li>)
+        const StopPredictions = predictions[id].map((prediction, index) => <li key={index}><Text>{prediction.route}  {prediction.timeToDeparture}</Text></li>)
         const { intersection, nickname } = STOPS.find((stop) => stop.id === id)
         const stopNickname = <Header size="medium">{nickname}</Header>
         const stopIntersection = <Header size="small">{intersection}</Header>
