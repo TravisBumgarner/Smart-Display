@@ -2,24 +2,16 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { mbta } from './services'
-import { useInterval } from './utilities'
+import { useInterval } from '../../utilities'
+import { Header } from '../'
 
 const StopWrapper = styled.div`
-
+    margin-right: 30px; 
+    padding: 10px 10px 10px 0;
 `
 
 const StopsWrapper = styled.div`
     display: flex;
-    width: calc(100vw - 60px);
-    justify-content: space-between;
-    margin: 30px;
-`
-
-const Intersection = styled.h2`
-
-`
-
-const Nickname = styled.h3`
 `
 
 const STOPS = [
@@ -96,7 +88,7 @@ const getPredictions = () => {
     return predictions
 }
 
-const App = () => {
+const T = () => {
     const [predictions, setPredictions] = React.useState<any>({})
 
     React.useEffect(() => {
@@ -113,20 +105,18 @@ const App = () => {
         }
         const StopPredictions = predictions[id].map((prediction, index) => <li key={index}>{prediction.route} {prediction.departure} {prediction.timeToDeparture}</li>)
         const { intersection, nickname } = STOPS.find((stop) => stop.id === id)
-        const stopNickname = <Nickname>{nickname}</Nickname>
-        const stopIntersection = <Intersection>{intersection}</Intersection>
+        const stopNickname = <Header size="medium">{nickname}</Header>
+        const stopIntersection = <Header size="small">{intersection}</Header>
 
         return (
 
             <StopWrapper>
-                {stopIntersection}
                 {stopNickname}
+                {stopIntersection}
                 <ul key={id}>
                     {StopPredictions}
                 </ul>
             </StopWrapper>
-
-
         )
     })
 
@@ -137,4 +127,4 @@ const App = () => {
     )
 }
 
-export default App
+export default T

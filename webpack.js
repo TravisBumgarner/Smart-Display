@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = env => {
     return {
         entry: {
-            app: './src/ui/index.tsx'
+            app: './src/index.tsx'
         },
         output: {
             filename: '[name]-[hash].bundle.js',
