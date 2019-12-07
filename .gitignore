@@ -1,6 +1,6 @@
 node_modules/
 config.js
 config.ts
-app.bundle.js
+dist/
 .DS_Store
 postgres-data/

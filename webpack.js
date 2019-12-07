@@ -3,14 +3,21 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = env => {
+    let publicPath
+    if (env.NODE_ENV === 'production') {
+        publicPath = '/static'
+    } else {
+        publicPath = '/'
+    }
+
     return {
         entry: {
             app: './src/index.tsx'
         },
         output: {
-            filename: 'app.bundle.js',
+            filename: '[name]-[hash].bundle.js',
             path: path.resolve(__dirname, 'dist'),
-            publicPath: '/'
+            publicPath
         },
         resolve: {
             extensions: ['.ts', '.tsx', '.js']
@@ -31,7 +38,9 @@ module.exports = env => {
         plugins: [
             new HtmlWebpackPlugin({
                 template: './index.template.ejs',
-                inject: 'body'
+                inject: 'body',
+                path: path.resolve(__dirname, './dist'),
+                publicPath: '/dist'
             })
         ]
     }
