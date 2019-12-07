@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { mbta } from './services'
+import { mbta } from '../../services'
 import { useInterval } from '../../utilities'
 import { Header, Text } from '../'
 
@@ -13,6 +13,10 @@ const StopWrapper = styled.div`
 
 const StopsWrapper = styled.div`
     display: flex;
+`
+
+const TimesWrapper = styled.div`
+    margin-top: 2em;
 `
 
 const STOPS = [
@@ -87,14 +91,15 @@ const getAllPredictions = () => {
 
 const Times = () => {
     const [predictions, setPredictions] = React.useState<any>({})
+    const [lastUpdated, setLastUpdated] = React.useState(null)
 
-    React.useEffect(() => {
+    const fetchPredictions = () => {
         getAllPredictions().then(setPredictions)
-    }, [])
+        setLastUpdated(new Date().toLocaleTimeString())
+    }
 
-    useInterval(() => {
-        getAllPredictions().then(setPredictions)
-    }, 10000)
+    React.useEffect(() => { fetchPredictions() }, [])
+    useInterval(() => { fetchPredictions() }, 10000)
 
     const Predictions = STOP_IDS.map(id => {
         if (!Object.keys(predictions).length) {
@@ -115,7 +120,7 @@ const Times = () => {
 
         return (
             <StopWrapper>
-                <Header size="small">{nickname}</Header>
+                <Header size="small">{nickname} </Header>
                 <ul key={id}>
                     {PredictionsByRoute}
                 </ul>
@@ -124,12 +129,12 @@ const Times = () => {
     })
 
     return (
-        <React.Fragment>
-            <Header size="medium">Next Stop</Header>
+        <TimesWrapper>
+            <Header size="medium">Next Stop  (Last Updated: {lastUpdated})</Header>
             <StopsWrapper>
                 {Predictions}
             </StopsWrapper>
-        </React.Fragment>
+        </TimesWrapper>
     )
 }
 

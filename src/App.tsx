@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { Times, Header, Weather } from './components'
+import { useInterval } from './utilities'
 
 const AppWrapper = styled.div`
     font-size: 16px;
@@ -14,9 +15,18 @@ const AppWrapper = styled.div`
 `
 
 const App = () => {
+    const [now, setNow] = React.useState('')
+    const [today, setToday] = React.useState('')
+
+    useInterval(() => {
+        setToday(new Date().toLocaleDateString())
+        setNow(new Date().toLocaleTimeString())
+    }, 1000)
+
+
     return (
         <AppWrapper>
-            <Header size="large">Hello.</Header>
+            <Header size="large">Hello, today is {today} it is {now}.</Header>
             <Times />
             <Weather />
         </AppWrapper>

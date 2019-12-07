@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import * as config from '../../../../config'
+import * as config from '../../config'
 
 const routeDetails = async (route: string) => {
     const { data: { data } } = await axios.get(`${config.MBTA_BASE_URL}/routes/${route}`, {
