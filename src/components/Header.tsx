@@ -9,23 +9,23 @@ const sharedStyles = () => css`
 
 const LargeHeader = styled.h1`
     ${(props: Partial<HeaderProps>) => sharedStyles()};
-    margin-bottom: 1em;
-    margin-top: 1em;
-    font-size: 2em;
+    margin-bottom: 0.6em;
+    margin-top: 0.6em;
+    font-size: 1.5em;
 `
 
 const MediumHeader = styled.h2`
     ${(props: Partial<HeaderProps>) => sharedStyles()};
-    margin-bottom: 1em;
-    margin-top: 1em;
-    font-size: 1.5em;
+    margin-bottom: 0.4em;
+    margin-top: 0.4em;
+    font-size: 1.25em;
 `
 
 const SmallHeader = styled.h3`
     ${(props: Partial<HeaderProps>) => sharedStyles()};
-    font-size: 1.2em;
-    margin-bottom: 1em;
-    margin-top: 1em;
+    font-size: 1em;
+    margin-bottom: 0.2em;
+    margin-top: 0.2em;
 `
 
 const InlineHeader = styled.span`
