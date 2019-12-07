@@ -32,6 +32,8 @@ const STOPS = [
     },
 ]
 
+const ROUTES = ['86', '91', '747']
+
 const STOP_IDS = STOPS.map(({ id }) => id)
 
 const formatDateToTime = (dateStr) => {
@@ -88,7 +90,7 @@ const getPredictions = () => {
     return predictions
 }
 
-const T = () => {
+const Times = () => {
     const [predictions, setPredictions] = React.useState<any>({})
 
     React.useEffect(() => {
@@ -103,18 +105,28 @@ const T = () => {
         if (!Object.keys(predictions).length) {
             return
         }
-        const StopPredictions = predictions[id].map((prediction, index) => <li key={index}><Text>{prediction.route}  {prediction.timeToDeparture}</Text></li>)
+
+        const stopPredictions = {}
+        predictions[id]
+            .forEach(({ route, timeToDeparture }) => {
+                stopPredictions[route]
+                    ? stopPredictions[route].push(timeToDeparture)
+                    : stopPredictions[route] = [timeToDeparture]
+            })
+        console.log(stopPredictions)
+        const Departures = Object.keys(stopPredictions).map(key => <li key={key}>{key} - {stopPredictions[key].join(', ')}</li>)
+
         const { intersection, nickname } = STOPS.find((stop) => stop.id === id)
         const stopNickname = <Header size="small">{nickname}</Header>
         const stopIntersection = <Text >{intersection}</Text>
 
-        return (
 
+        return (
             <StopWrapper>
-                {stopNickname}
                 {stopIntersection}
+                {stopNickname}
                 <ul key={id}>
-                    {StopPredictions}
+                    {Departures}
                 </ul>
             </StopWrapper>
         )
@@ -130,4 +142,4 @@ const T = () => {
     )
 }
 
-export default T
+export default Times

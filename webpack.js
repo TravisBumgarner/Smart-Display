@@ -8,7 +8,7 @@ module.exports = env => {
             app: './src/index.tsx'
         },
         output: {
-            filename: '[name]-[hash].bundle.js',
+            filename: 'app.bundle.js',
             path: path.resolve(__dirname, 'dist'),
             publicPath: '/'
         },
@@ -25,10 +25,8 @@ module.exports = env => {
             ]
         },
         devServer: {
-            contentBase: './dist',
-            port: 3000,
-            historyApiFallback: true,
-            publicPath: '/'
+            port: 5001,
+            historyApiFallback: true
         },
         plugins: [
             new HtmlWebpackPlugin({
