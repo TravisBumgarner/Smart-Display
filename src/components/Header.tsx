@@ -11,7 +11,7 @@ const LargeHeader = styled.h1`
     ${(props) => sharedStyles()};
     padding-bottom: 0.6em;
     padding-top: 0.6em;
-    font-size: 1.8em;
+    font-size: 1.7em;
 `
 
 const MediumHeader = styled.h2`
@@ -23,7 +23,7 @@ const MediumHeader = styled.h2`
 
 const SmallHeader = styled.h3`
     ${(props) => sharedStyles()};
-    font-size: 1.2em;
+    font-size: 1.3em;
     padding-bottom: 0.2em;
     padding-top: 0.2em;
 `
