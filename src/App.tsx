@@ -6,12 +6,12 @@ import { useInterval } from './utilities'
 
 const AppWrapper = styled.div`
     font-size: 16px;
-    padding: 30px;
     background-color: black;
     width: 100vw;
     height: 100vh;
     box-sizing: border-box;
     color: white;
+    padding: 0px 10px;
 `
 
 const App = () => {

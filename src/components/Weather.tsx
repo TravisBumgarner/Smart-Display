@@ -10,7 +10,7 @@ const WeatherDetailsWrapper = styled.div`
 `
 
 const WeatherWrapper = styled.div`
-    margin-top: 2em;
+    margin-top: 0.5em;
 `
 
 const WeatherSegment = styled.div`

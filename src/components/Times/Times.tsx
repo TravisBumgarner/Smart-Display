@@ -16,7 +16,7 @@ const StopsWrapper = styled.div`
 `
 
 const TimesWrapper = styled.div`
-    margin-top: 2em;
+    margin-top: 0.5em;
 `
 
 const STOPS = [
