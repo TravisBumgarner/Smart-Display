@@ -20,7 +20,7 @@ const WeatherSegment = styled.div`
 `
 
 const CurrentTemperature = styled.p`
-    font-size: 1.5em;
+    font-size: 1.2em;
 `
 
 const unixToTime = (unix_timestamp) => {
