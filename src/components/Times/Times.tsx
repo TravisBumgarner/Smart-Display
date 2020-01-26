@@ -19,6 +19,10 @@ const TimesWrapper = styled.div`
     margin-top: 0.5em;
 `
 
+const ListItem = styled.li`
+font-size: 1.5em;
+`
+
 const STOPS = [
     {
         id: '2773',
@@ -89,6 +93,22 @@ const getAllPredictions = () => {
     return predictions
 }
 
+const timeStringToSeconds = (timeStr) => {
+
+    const isMin = timeStr.slice(-1) === 'm'
+
+    const timeInt = parseInt(timeStr.slice(0, timeStr.length - 1))
+
+    return isMin ? timeInt * 60 : timeInt
+}
+
+const byTime = (a, b) => {
+    const timeA = timeStringToSeconds(a.props.children[2])
+    const timeB = timeStringToSeconds(b.props.children[2])
+    console.log(timeA, timeB)
+    return timeA - timeB
+}
+
 const Times = () => {
     const [predictions, setPredictions] = React.useState<any>({})
     const [lastUpdated, setLastUpdated] = React.useState(null)
@@ -113,8 +133,8 @@ const Times = () => {
                     ? predictionsByRoute[route].push(timeToDeparture)
                     : predictionsByRoute[route] = [timeToDeparture]
             })
+        const PredictionsByRoute = Object.keys(predictionsByRoute).map(key => predictionsByRoute[key].map(p => <ListItem key={key + p}>{key} - {p}</ListItem>)).flat().sort(byTime)
 
-        const PredictionsByRoute = Object.keys(predictionsByRoute).map(key => <li key={key}>{key} - {predictionsByRoute[key].join('  |  ')}</li>)
 
         const { nickname } = STOPS.find((stop) => stop.id === id)
 
