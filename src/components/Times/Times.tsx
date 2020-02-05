@@ -105,7 +105,6 @@ const timeStringToSeconds = (timeStr) => {
 const byTime = (a, b) => {
     const timeA = timeStringToSeconds(a.props.children[2])
     const timeB = timeStringToSeconds(b.props.children[2])
-    console.log(timeA, timeB)
     return timeA - timeB
 }
 
@@ -120,6 +119,7 @@ const Times = () => {
 
     React.useEffect(() => { fetchPredictions() }, [])
     useInterval(() => { fetchPredictions() }, 10000)
+    useInterval(() => { window.location.reload() }, 60000) // For whatever reason I don't care to troubleshoot. The next bus loads up. 
 
     const Predictions = STOP_IDS.map(id => {
         if (!Object.keys(predictions).length) {
