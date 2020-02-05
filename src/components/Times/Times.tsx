@@ -6,9 +6,9 @@ import { useInterval } from '../../utilities'
 import { Header, Text } from '../'
 
 const StopWrapper = styled.div`
-    margin-right: 1em; 
     border-left: 2px solid white;
     padding-left: 10px;
+    padding-right: 10px;
 `
 
 const StopsWrapper = styled.div`
@@ -16,7 +16,6 @@ const StopsWrapper = styled.div`
 `
 
 const TimesWrapper = styled.div`
-    margin-top: 0.5em;
 `
 
 const ListItem = styled.li`
