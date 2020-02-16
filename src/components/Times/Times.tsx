@@ -132,8 +132,13 @@ const Times = () => {
                     ? predictionsByRoute[route].push(timeToDeparture)
                     : predictionsByRoute[route] = [timeToDeparture]
             })
-        const PredictionsByRoute = Object.keys(predictionsByRoute).map(key => predictionsByRoute[key].map(p => <ListItem key={key + p}>{key} - {p}</ListItem>)).flat().sort(byTime)
-
+        const PredictionsByRoute = Object
+            .keys(predictionsByRoute)
+            .map(key => predictionsByRoute[key]
+                .map(p => <ListItem key={key + p}>{key} - {p}</ListItem>)
+            )
+            .flat().sort(byTime)
+            .splice(0,5)
 
         const { nickname } = STOPS.find((stop) => stop.id === id)
 
