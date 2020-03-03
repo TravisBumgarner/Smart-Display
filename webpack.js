@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = env => {
     let publicPath
     if (env.NODE_ENV === 'production') {
-        publicPath = '/static'
+        publicPath = '/dist'
     } else {
         publicPath = '/'
     }
@@ -15,7 +15,7 @@ module.exports = env => {
             app: './src/index.tsx'
         },
         output: {
-            filename: '[name]-[hash].bundle.js',
+            filename: 'app.bundle.bundle.js',
             path: path.resolve(__dirname, 'dist'),
             publicPath
         },
@@ -34,14 +34,6 @@ module.exports = env => {
         devServer: {
             port: 5001,
             historyApiFallback: true
-        },
-        plugins: [
-            new HtmlWebpackPlugin({
-                template: './index.template.ejs',
-                inject: 'body',
-                path: path.resolve(__dirname, './dist'),
-                publicPath: '/dist'
-            })
-        ]
+        }
     }
 }

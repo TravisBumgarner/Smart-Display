@@ -6,7 +6,7 @@
     "scripts": {
         "start-ui-dev": "webpack-dev-server --mode=development  --env.NODE_ENV=development --config webpack.js",
         "start-api-dev": "nodemon src/api/index.ts",
-        "bundle-ui": "rm ./dist/app*; mkdir ./dist; NODE_ENV=production; webpack --env.NODE_ENV=production --mode=production --config webpack.js --verobose",
+        "bundle-ui": "NODE_ENV=production; webpack --env.NODE_ENV=production --mode=production --config webpack.js --verobose",
         "knex-migrate-make": "knex migrate:make --knexfile ./knexfile.ts",
         "knex-migrate-latest": "knex migrate:latest --knexfile ./knexfile.ts"
     },
