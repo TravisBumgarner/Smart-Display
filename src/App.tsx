@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { Times, Header, Weather } from './components'
+import {  Header } from './components'
 import { useInterval } from './utilities'
 
 const AppWrapper = styled.div`
@@ -27,8 +27,6 @@ const App = () => {
     return (
         <AppWrapper>
             <Header size="large">Hello, today is {today} it is {now}.</Header>
-            <Times />
-            <Weather />
         </AppWrapper>
     )
 }

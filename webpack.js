@@ -1,39 +1,40 @@
 const path = require('path')
-const webpack = require('webpack')
+var webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = env => {
-    let publicPath
-    if (env.NODE_ENV === 'production') {
-        publicPath = '/dist'
-    } else {
-        publicPath = '/'
-    }
-
     return {
         entry: {
             app: './src/index.tsx'
         },
-        output: {
-            filename: 'app.bundle.bundle.js',
-            path: path.resolve(__dirname, 'dist'),
-            publicPath
-        },
-        resolve: {
-            extensions: ['.ts', '.tsx', '.js']
-        },
         module: {
             rules: [
                 {
-                    test: /\.ts(x)?$/,
+                    test: /\.[jt]s[x]?$/,
                     exclude: /node_modules/,
                     loader: 'babel-loader',
                 }
             ]
         },
+        output: {
+            filename: '[name]-[hash].bundle.js',
+            path: path.resolve(__dirname, 'public'),
+            publicPath: '/'
+        },
+        resolve: {
+            extensions: ['.ts', '.tsx', '.js']
+        },
         devServer: {
-            port: 5001,
-            historyApiFallback: true
-        }
+            contentBase: './public',
+            port: 3000,
+            historyApiFallback: true,
+            publicPath: '/'
+        },
+        plugins: [
+            new HtmlWebpackPlugin({
+                template: './src/index.template.ejs',
+                inject: 'body'
+            })
+        ]
     }
 }

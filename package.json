@@ -4,11 +4,9 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start-ui-dev": "webpack-dev-server --mode=development  --env.NODE_ENV=development --config webpack.js",
-        "start-api-dev": "nodemon src/api/index.ts",
-        "bundle-ui": "NODE_ENV=production; webpack --env.NODE_ENV=production --mode=production --config webpack.js --verobose",
-        "knex-migrate-make": "knex migrate:make --knexfile ./knexfile.ts",
-        "knex-migrate-latest": "knex migrate:latest --knexfile ./knexfile.ts"
+        "start-dev": "webpack-dev-server --mode=development  --env.NODE_ENV=development --config webpack.js",
+        "bundle": "NODE_ENV=production; rm -rf ./public; mkdir ./public; webpack --env.NODE_ENV=production --mode=production --config webpack.js --verobose",
+        "deploy": "gcloud builds submit --tag gcr.io/eng40-277714/smartdisplay && gcloud run deploy smartdisplay --image gcr.io/eng40-277714/smartdisplay --platform managed --region us-east1"
     },
     "keywords": [],
     "author": "",
