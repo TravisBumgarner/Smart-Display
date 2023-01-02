@@ -1,3 +1,6 @@
+![image](https://user-images.githubusercontent.com/11890057/210198336-d452cbdc-b9f8-41f0-9b6f-353800db03ce.png)
+
+
 # Raspberry Pi Setup
 
 ## Resources
